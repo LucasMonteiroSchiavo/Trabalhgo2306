@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mercadinho Digital</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Tela de Login -->
+  <div id="login-container">
+    <div class="login-card">
+      <h2><i class="fas fa-store"></i> Mercadinho Digital</h2>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="Usuário" />
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="Senha" />
+      </div>
+      <button onclick="login()" class="btn-primary">Entrar</button>
+    </div>
+  </div>
+
+  <!-- Tela Principal -->
+  <div id="main" class="hidden">
+    <header class="header">
+      <h1><i class="fas fa-store"></i> Catálogo de Produtos</h1>
+      <div class="header-actions">
+        <div class="cart-info">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0 itens</span>
+        </div>
+        <button onclick="logout()" class="btn-outline">Sair</button>
+      </div>
+    </header>
+
+    <div id="loading" class="loading hidden">
+      <p>Carregando produtos...</p>
+    </div>
+
+    <div id="products" class="products-grid"></div>
+
+    <div class="cart-section">
+      <h2><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h2>
+      <div id="cart" class="cart-container">
+        <p class="empty-cart">Carrinho vazio</p>
+      </div>
+      <div id="cart-total" class="cart-total hidden">
+        <div class="total-price">
+          <strong>Total: R$ <span id="total-amount">0.00</span></strong>
+        </div>
+        <button onclick="checkout()" class="btn-primary btn-full">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tela de Checkout -->
+  <div id="checkout-form" class="hidden">
+    <div class="checkout-container">
+      <h2>Finalização da Compra</h2>
+      
+      <div class="order-summary">
+        <h3>Resumo do Pedido:</h3>
+        <div id="order-items"></div>
+        <div class="order-total">
+          <strong>Total: R$ <span id="checkout-total">0.00</span></strong>
+        </div>
+      </div>
+
+      <div class="checkout-form">
+        <div class="input-group">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" placeholder="Endereço completo" id="address"/>
+        </div>
+        
+        <div class="input-group">
+          <i class="fas fa-credit-card"></i>
+          <select id="payment">
+            <option value="pix">Pix</option>
+            <option value="boleto">Boleto</option>
+            <option value="cartao">Cartão</option>
+          </select>
+        </div>
+
+        <div class="checkout-actions">
+          <button onclick="backToMain()" class="btn-outline">Voltar</button>
+          <button onclick="confirmOrder()" class="btn-primary">Confirmar Pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
